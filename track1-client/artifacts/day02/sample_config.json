@@ -1,0 +1,20 @@
+{
+  "prompt": "Explain KV-cache memory calculation in modern LLM serving.",
+  "model": "meta-llama/Llama-3-8B-Instruct",
+  "generation": {
+    "max_tokens": 512,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "stop_sequences": [
+      "<|eot_id|>"
+    ]
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8000,
+    "protocol": "http",
+    "timeout_seconds": 60.0
+  },
+  "request_id": "req-sample-001",
+  "stream": true
+}
