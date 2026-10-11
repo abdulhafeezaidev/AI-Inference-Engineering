@@ -1,0 +1,7 @@
+Day 3 Failure Test
+
+Input: Negative inference duration (-1)
+Expected result: ValueError
+Observed result: ValueError: duration must not be negative
+Cause: The input validation rejects negative durations.
+Recovery: No code change was needed; the failure was intentional.

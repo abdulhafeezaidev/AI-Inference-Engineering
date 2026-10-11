@@ -6,7 +6,7 @@ print(config)
 print(config["model"])
 print(config["max_tokens"])
 
-json_text = json.dumps(config, indent=4)
+Njson_text = json.dumps(config, indent=4)
 print(json_text)
 
 with open("output.json","w") as file:

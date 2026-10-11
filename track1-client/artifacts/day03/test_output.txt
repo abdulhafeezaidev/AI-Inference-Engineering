@@ -1,0 +1,13 @@
+============================= test session starts =============================
+platform win32 -- Python 3.14.8, pytest-9.1.1, pluggy-1.6.0 -- D:\AI Inference Engineering\track1-client\.venv\Scripts\python.exe
+cachedir: .pytest_cache
+rootdir: D:\AI Inference Engineering\track1-client
+configfile: pyproject.toml
+collecting ... collected 4 items
+
+tests/test_async_demo.py::test_requests_run_concurrently PASSED          [ 25%]
+tests/test_async_demo.py::test_timeout_raises_timeout_error PASSED       [ 50%]
+tests/test_async_demo.py::test_cancellation_runs_cleanup PASSED          [ 75%]
+tests/test_async_demo.py::test_negative_duration_is_rejected PASSED      [100%]
+
+============================== 4 passed in 0.61s ==============================
