@@ -1,0 +1,80 @@
+========================================
+DAY 05 - PROCESS OBSERVATION REPORT
+========================================
+Date: Tue Oct 13 18:32:14 PKT 2026
+Working directory: /mnt/d/AI Inference Engineering/track1-client
+
+----- Python Version -----
+./scripts/observe_process.sh: line 85: python: command not found
+Python version command exit status: 127
+
+----- File Details -----
+total 8
+-rwxrwxrwx 1 abhafeez abhafeez 2921 Oct 10 18:35 README.md
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct 12 18:45 artficats
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct 13 17:13 artifacts
+-rwxrwxrwx 1 abhafeez abhafeez  112 Oct 11 19:16 config.json
+-rwxrwxrwx 1 abhafeez abhafeez 2740 Oct  9 21:59 environment.md
+-rwxrwxrwx 1 abhafeez abhafeez  107 Oct  9 21:27 hello_inference.py
+-rwxrwxrwx 1 abhafeez abhafeez  106 Oct 10 18:42 hello_reference.py
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct 13 18:29 logs
+-rwxrwxrwx 1 abhafeez abhafeez  101 Oct 10 22:52 output.json
+-rwxrwxrwx 1 abhafeez abhafeez  260 Oct 10 22:12 practice_dataclass.py
+-rwxrwxrwx 1 abhafeez abhafeez  271 Oct 10 22:38 practice_enum.py
+-rwxrwxrwx 1 abhafeez abhafeez  226 Oct 10 21:47 practice_functions.py
+-rwxrwxrwx 1 abhafeez abhafeez  301 Oct 11 19:16 practice_json.py
+-rwxrwxrwx 1 abhafeez abhafeez  454 Oct 10 18:32 pyproject.toml
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct 13 18:15 scripts
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct 10 18:35 src
+-rwxrwxrwx 1 abhafeez abhafeez   37 Oct  9 21:29 stderr.txt
+-rwxrwxrwx 1 abhafeez abhafeez   24 Oct  9 21:29 stdout.txt
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct 12 20:41 tests
+drwxrwxrwx 1 abhafeez abhafeez  512 Oct  9 20:49 track1_client.egg-info
+File listing exit status: 0
+
+----- Process List -----
+UID          PID    PPID  C STIME TTY          TIME CMD
+root           1       0  0 17:34 ?        00:00:00 /sbin/init
+root           2       1  0 17:34 hvc0     00:00:00 /init
+root           7       2  0 17:34 hvc0     00:00:00 plan9 --control-socket 7 --log-level 4 --server-fd 8 --pipe-fd 10 --log-truncate
+root          50       1  0 17:34 ?        00:00:00 /usr/lib/systemd/systemd-journald
+systemd+      84       1  0 17:34 ?        00:00:00 /usr/lib/systemd/systemd-resolved
+root          90       1  0 17:34 ?        00:00:01 /usr/lib/systemd/systemd-udevd
+root         156       1  0 17:34 ?        00:00:00 /bin/sh /usr/lib/systemd/scripts/chronyd-starter.sh -n -F 1
+root         157       1  0 17:34 ?        00:00:00 /usr/sbin/cron -f -P
+message+     158       1  0 17:34 ?        00:00:00 @dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation --syslog-only
+root         165       1  0 17:34 ?        00:00:00 /usr/bin/python3 /usr/bin/networkd-dispatcher --run-startup-triggers
+root         169       1  0 17:34 ?        00:00:00 /usr/lib/systemd/systemd-logind
+root         194       1  0 17:34 tty1     00:00:00 /usr/sbin/agetty --noreset --noclear --issue-file=/etc/issue:/etc/issue.d:/run/issue.d:/usr/lib/issue.d - linux
+syslog       196       1  0 17:34 ?        00:00:00 /usr/sbin/rsyslogd -n -iNONE
+root         208       1  0 17:34 ?        00:00:00 /usr/bin/python3 /usr/share/unattended-upgrades/unattended-upgrade-shutdown --wait-for-signal
+_chrony      232     156  0 17:34 ?        00:00:00 /usr/sbin/chronyd -n -F 1 -x
+_chrony      246     232  0 17:34 ?        00:00:00 /usr/sbin/chronyd -n -F 1 -x
+root         402       2  0 17:34 ?        00:00:00 login -- abhafeez
+abhafeez     460       1  0 17:34 ?        00:00:00 /usr/lib/systemd/systemd --user
+abhafeez     462     460  0 17:34 ?        00:00:00 (sd-pam)
+abhafeez     494     402  0 17:34 pts/1    00:00:00 -bash
+abhafeez    1445       1  0 18:26 ?        00:00:00 bash
+abhafeez    1463    1445  0 18:29 ?        00:00:00 bash
+abhafeez    1464    1463  0 18:29 ?        00:00:00 bash
+root        1479      90  1 18:32 ?        00:00:00 (udev-worker)
+root        1480      90  0 18:32 ?        00:00:00 (udev-worker)
+root        1481      90  0 18:32 ?        00:00:00 (udev-worker)
+root        1482      90  0 18:32 ?        00:00:00 (udev-worker)
+abhafeez    1487    1464 99 18:32 ?        00:00:00 ps -ef
+Process listing exit status: 0
+
+----- Current Shell Process -----
+    PID    PPID STAT COMMAND
+   1463    1445 S    bash
+
+----- Process Tree -----
+bash(1463)---bash(1464)---pstree(1489)
+
+----- Selected Environment Variables -----
+USER=abhafeez
+HOME=/home/abhafeez
+PWD=/mnt/d/AI Inference Engineering/track1-client
+
+----- Report Finished -----
+Observation script completed.
