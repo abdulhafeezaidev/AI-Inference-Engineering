@@ -1,0 +1,58 @@
+### 1. Primary Core Books (Your Main Daily Study Books)
+
+  1. Book Name: Fluent Python: Clear, Concise, and Effective Programming (2nd Edition, 2022)
+      • Author Name: Luciano Ramalho
+      • Publisher Name: O'Reilly Media
+      • Where Used: Months 1, 2, 3, and 5 (Covers Data Model dunder methods, __slots__, Type Hints, Protocols, Generics, Decorators,
+      Descriptors, Iterators/Generators, asyncio, Concurrency, __init_subclass__, and Metaclasses).
+  2. Book Name: Robust Python: Write Clean and Maintainable Code (1st Edition, 2021)
+      • Author Name: Patrick Viafore
+      • Publisher Name: O'Reilly Media
+      • Where Used: Months 1 and 4 (Covers Strict static typing with mypy, dataclass, Enum, Protocol, TypedDict, custom collections,
+      context managers, and extensible architecture).
+  3. Book Name: Python Concurrency with asyncio: Understanding Asynchronous Programming in Python (1st Edition, 2022)
+      • Author Name: Matthew Fowler
+      • Publisher Name: Manning Publications
+      • Where Used: Months 3 and 8 (Covers Event loops, Tasks, timeouts, cancellation, shields, raw async TCP sockets, streaming
+      HTTP/SSE, queues, and asyncio + multiprocessing bridges).
+  4. Book Name: High Performance Python: Practical Performant Programming for Humans (2nd Edition, 2020)
+      • Author Name: Micha Gorelick and Ian Ozsvald
+      • Publisher Name: O'Reilly Media
+      • Where Used: Months 2, 6, and 7 (Covers Algorithmic complexity, cProfile, line & memory profiling, CPython memory layout,
+      array/memoryview zero-copy buffers, vectorization, shared_memory, the GIL, and native C extensions).
+
+  ──────
+  ### 2. Specialized Reference Books (Internals, Testing & Model Mechanics)
+
+  5. Book Name: CPython Internals: Your Guide to the Python 3 Interpreter (1st Edition, 2021)
+      • Author Name: Anthony Shaw
+      • Publisher Name: Real Python (Real Python Press)
+      • Where Used: Months 5 and 6 (Covers AST parsing, bytecode compilation with dis, frame evaluation loop, PyObject reference
+      counting, and cyclic garbage collection).
+  6. Book Name: Python Testing with pytest: Simple, Rapid, Effective, and Scalable (2nd Edition, 2022)
+      • Author Name: Brian Okken
+      • Publisher Name: The Pragmatic Bookshelf (Pragmatic Programmers)
+      • Where Used: Months 1–4 (Covers Professional test suites, fixtures, parametrization, tmp_path, monkeypatch, and fast unit
+      test architecture).
+  7. Book Name: Build a Large Language Model (From Scratch) (1st Edition, 2024)
+      • Author Name: Sebastian Raschka
+      • Publisher Name: Manning Publications
+      • Where Used: Month 6 (Week 23) (Covers From-scratch BPE tokenization, causal self-attention, RoPE, layer normalization, and
+      autoregressive generation loops).
+  8. Book Name: Architecture Patterns with Python: Enabling Test-Driven Development, Domain-Driven Design, and Event-Driven
+  Microservices (1st Edition, 2020)
+      • Author Name: Harry Percival and Bob Gregory
+      • Publisher Name: O'Reilly Media
+      • Where Used: Months 1 & 4 (Weeks 4 & 13) (Covers Clean Architecture, separating domain models from I/O adapters using
+      Protocol ports, and dependency injection).
+  9. Book Name: Effective Python: 125 Specific Ways to Write Better Python (3rd Edition, 2024)
+      • Author Name: Brett Slatkin
+      • Publisher Name: Addison-Wesley Professional (Pearson)
+      • Where Used: Months 1–8 (Daily idiom reference for modern Python 3.12/3.13 best practices, concurrency traps, and API
+      design).
+
+  ──────
+  These book titles and chapters are cross-referenced across all 224 daily lessons in both:
+
+  • PYTHON_MASTERY_CURRICULUM_BOOK.html
+  • PYTHON_MASTERY_CURRICULUM_BOOK.pdf
