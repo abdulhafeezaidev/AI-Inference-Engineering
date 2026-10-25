@@ -6,6 +6,7 @@ import subprocess
 
 from python_curriculum_part1 import WEEKS_PART1
 from python_curriculum_part2 import WEEKS_PART2
+import curriculum_enhancements
 
 ROOT = Path(__file__).parent
 md_path = ROOT / "PYTHON_MASTERY_CURRICULUM.md"
@@ -57,15 +58,26 @@ Because you **already know basic programming concepts** (variables, loops, condi
   - **Phase 2 — Advanced Concepts Mastery (Months 5–8 | Weeks 17–32 | Days 113–224 | 112 Hours):**
     Elevates you to **Senior/Staff Systems & AI Inference Python**: runtime metaprogramming (`__init_subclass__`, metaclasses, AST transformations, `dis` bytecode inspection, `sys.monitoring`), authoring a Pydantic + FastAPI framework from scratch (`NanoSchema` + `NanoServe`), CPython memory internals (`PyObject`, refcounting, cyclic GC tuning, Buffer Protocol, zero-copy `memoryview`), building a strided N-dimensional Tensor, Quantizer (INT8/INT4), Autograd engine, and KV-cached Transformer (`NanoLLM`) from scratch, implementing vLLM's PagedAttention Block Manager & Continuous Batching Scheduler, deterministic/statistical flamegraph profiling, roofline analysis, Free-Threaded Python (PEP 703), native C/C++/CUDA/Triton/DLPack interoperability, distributed multi-process IPC, and the **Month 8 Advanced Capstone (`Mini-vLLM`)**.
 
-#### The 60-Minute Daily Workload Contract
+#### The 60-Minute Daily Workload Contract: Dual-Mode Weekly Rhythm
 
-Every daily lesson is strictly bounded to **1.0 Hour (60 minutes)** so you can sustain a 100% streak alongside your other commitments:
+Every daily lesson is strictly bounded to **1.0 Hour (60 minutes)** so you can sustain a 100% streak alongside your other commitments: **Full Session: 60 mins | Core-Only Sprint: 42 mins | Minor/Verification: 18 mins**. The curriculum operates on an interview-aligned **Dual-Mode Weekly Rhythm**:
 
-| Time Block | Duration | Weight | Activity |
-|---|---|---|---|
-| **1. Targeted Concept & Book Retrieval** | **15 mins** | Core Reading | Read the exact mapped subsection from the recommended book/docs and inspect how the mechanism works under the hood. |
-| **2. From-Scratch Quality Implementation** | **30 mins** | **[CORE - 70%]** | Implement the day's module from a blank file in `src/pymastery/` with strict type annotations, docstrings, and clean architecture. |
-| **3. Verification, Static Audit & Failure Test** | **15 mins** | **[MINOR - 30%]** | Write & run `pytest`, `mypy --strict`, and `ruff check`, plus execute Task 5 (break one assumption, observe the exact failure, and restore). |
+##### 1. Mode A: Blank-File Construction & Micro-Diagnosis (Days 1–5 of Each Week)
+- **Block 1 (15 mins | Core Reading + Predict & Trace):** 12 mins targeted book/doc retrieval + 3 mins pre-execution "Predict & Trace" on a 10–15 line snippet demonstrating that day's yellow Engineering Trap to Avoid.
+- **Block 2 (30 mins | [CORE - 70%] From-Scratch Implementation):** Blank-file implementation in `src/pymastery/` with AI autocomplete strictly OFF. You type every class, type signature, and test by hand to build indestructible muscle memory.
+- **Block 3 (15 mins | [MINOR - 30%] Verification, Static Audit & Diagnostic Task 5):** 8 mins `pytest` + `mypy --strict` + `ruff check`, followed by 7 mins Task 5 (Odd days: self-inflicted invariant break to test unit-test sensitivity; Even days: pre-seeded micro-bug diagnosis in `drills/dayXXX_buggy.py`).
+
+##### 2. Mode B: Adversarial AI Verification Lab (Day 6 of Each Week, Month 2 Onward)
+- Dedicate the final 20 minutes of the session to practicing the human-led, AI-assisted engineering workflow graded in Google and Meta coding interviews. Using constrained, hypothesis-driven prompts, inspect an unfamiliar module or audit an AI-generated implementation containing subtle concurrency, memory, or security flaws, logging empirical failure proofs in `artifacts/dayXXX/ai-audit.md`.
+
+##### 3. Weekly Gate: Unfamiliar Codebase Comprehension & Packet Narration (Day 7 of Each Week)
+- Combines clean-room verification, 3-phase unfamiliar codebase comprehension/extension (on 12 dedicated benchmark weeks modeled on Stripe Bug Squash / Google Code Comprehension rounds), and a mandatory 3-minute oral Hiring Committee Packet Narration covering assumptions, architecture, Big-O bounds, 10x failure modes, and trade-offs in `gates/weekXX-gate.md`.
+
+| Weekly Day | Mode / Focus | Core Blocks (42 mins) | Minor / Audit Blocks (18 mins) | Primary Verification Deliverable |
+|---|---|---|---|---|
+| **Days 1–5** | **Mode A (Blank-File Build & Diagnosis)** | 12m Reading + 3m Predict & Trace (Block 1) + 27m Blank-File Build (Block 2) | 11m Static Audit (`mypy`/`ruff`) + 7m Task 5 (Micro-Bug or Invariant Break) | `src/pymastery/` module + `drills/` or `artifacts/` failure proof |
+| **Day 6 (W5–32)** | **Mode B (Adversarial AI Verification)** | 10m Reading + 25m Hand-Typed Core + 7m Unit Tests | 10m Constrained AI Audit + 8m Hallucination Proof (`pytest`/`tracemalloc`) | `artifacts/dayXXX/ai-audit.md` empirical test failure proof |
+| **Day 7 (All Weeks)** | **Weekly Gate & Packet Narration** | 10m Cold Trace / Baseline + 22m Implementation/Extension + 10m Test Suite | 10m Static/Bottleneck Audit + 8m Hiring Committee Packet Narration Check | `gates/weekXX-gate.md` 5-bullet summary + passing gate suite |
 
 ---
 
@@ -105,23 +117,80 @@ def build_days_markdown(weeks_list, phase_title, phase_intro):
         track_badge = "Base Track (Months 1-4)" if month_num <= 4 else "Advanced Track (Months 5-8)"
         for title, objective, practical, deliverable, stop_cond, dont_study in days:
             minor_cmd = minor_cmd_template.format(day=day_counter)
+
+            # Check for day metadata overrides
+            if day_counter in curriculum_enhancements.DAY_METADATA_OVERRIDES:
+                overrides = curriculum_enhancements.DAY_METADATA_OVERRIDES[day_counter]
+                title = overrides.get("title", title)
+                objective = overrides.get("objective", objective)
+                practical = overrides.get("practical", practical)
+                deliverable = overrides.get("deliverable", deliverable)
+                stop_cond = overrides.get("stop_cond", stop_cond)
+                dont_study = overrides.get("dont_study", dont_study)
+
+            # Determine Big Picture text
+            if day_counter in curriculum_enhancements.COMPREHENSION_GATES:
+                big_pic = (
+                    f"Today is an intensive **60-Minute 3-Phase Unfamiliar Codebase Comprehension Simulation** "
+                    f"modeled on the Google Code Comprehension Round, Meta AI Coding Interview, and Stripe Bug Squash. "
+                    f"You will cold-read an unfamiliar 300–500 line multi-file repository in `comprehension_labs/week{week_num:02d}_repo/`, "
+                    f"squash 2 seeded bugs, implement an architectural feature extension, profile bottlenecks, and narrate your Hiring Committee Packet."
+                )
+            elif day_counter in [56, 109]:
+                big_pic = (
+                    f"{big_picture}\n>\n> Today is an Anthropic OA-style **4-Level Progressive Refactoring Simulation**: "
+                    f"Level k+1 requirements unlock only after Level k unit tests pass. You will scale from a core in-memory container "
+                    f"to prefix/range filtering, monotonic TTL rollback, and thread-safe batch compaction within the 60-minute contract without ground-up rewrites."
+                )
+            elif day_counter in range(204, 210):
+                big_pic = (
+                    f"{big_picture}\n>\n> **Grounded in Actual Open-Source vLLM Source Files:** Clone the official `vllm` repository alongside `py-mastery/` "
+                    f"and trace production source files with Mode B constrained prompts before implementing the clean-room `src/pymastery/vllm_mini/` module."
+                )
+            elif day_counter in curriculum_enhancements.MODE_B_AI_AUDITS:
+                big_pic = (
+                    f"{big_picture}\n>\n> Today's session includes a **Mode B Adversarial AI Verification Lab** (final 18 mins): "
+                    f"after hand-typing your from-scratch implementation with autocomplete OFF, you will use constrained prompts to audit an AI-generated "
+                    f"implementation, catch subtle hallucinations, and log empirical failure proofs in `artifacts/day{day_counter:03d}/ai-audit.md`."
+                )
+            elif day_counter % 7 == 0 and day_counter not in curriculum_enhancements.COMPREHENSION_GATES:
+                big_pic = (
+                    f"{big_picture}\n>\n> Today is your **Weekly Gate & Hiring Committee Defense**: consolidate weekly systems invariants cleanly from scratch, "
+                    f"complete clean-room verification, and record your 5-bullet oral Hiring Committee Packet Summary in `gates/week{week_num:02d}-gate.md`."
+                )
+            else:
+                big_pic = (
+                    f"{big_picture}\n>\n> Today is a focused **1.0-hour engineering session**: 42m core systems focus (`[CORE - 70%]`) "
+                    f"and 18m static verification, quality audit, and diagnostic/AI audit (`[MINOR - 30%]`)."
+                )
+
+            tasks = curriculum_enhancements.generate_day_tasks(
+                day_counter,
+                week_num,
+                month_num,
+                title,
+                objective,
+                practical,
+                deliverable,
+                stop_cond,
+                dont_study,
+                minor_focus,
+                minor_cmd,
+                trap_warning,
+            )
+            tasks_str = "\n".join(tasks)
+
             block = f"""##### Day {day_counter}: {title} `[CORE: {track_badge}]` `[MINOR: {minor_focus}]`
 
 > [!NOTE]
-> **The Big Picture:** {big_picture}
->
-> Today is a focused **1.0-hour engineering session**: 15m concept retrieval, 30m from-scratch implementation (`[CORE - 70%]`), and 15m static verification, unit testing, and failure diagnosis (`[MINOR - 30%]`).
+> **The Big Picture:** {big_pic}
 
 - **Primary Focus [CORE - 70% Weight | 42 mins]:** {objective}
 - **Secondary Focus [MINOR - 30% Weight | 18 mins]:** {minor_focus} — because {minor_why}.
 - **Mapped Book & Docs:** {mapped_resource}
 
 ###### Step-by-Step To-Do Tasks:
-- [ ] **[CORE] Task 1: Setup & Reading (10m):** Open `py-mastery/`, check `git status`, create `artifacts/day{day_counter:03d}/`, and review the mapped book section for `{title}`.
-- [ ] **[CORE] Task 2: From-Scratch Implementation (25m):** {practical}
-- [ ] **[CORE] Task 3: Automated Unit Tests (10m):** Write `pytest` unit and edge-case tests verifying `{title}` and save the test log beside {deliverable}.
-- [ ] **[MINOR] Task 4: Quality & Tooling Audit (8m):** {minor_focus}: {minor_cmd}
-- [ ] **Task 5: Failure & Diagnosis Test (7m):** Deliberately break one invariant or type/boundary assumption in `{title}`, verify that `pytest` or `mypy --strict` catches it immediately, restore the fix, and log the symptom in `artifacts/day{day_counter:03d}/failure-notes.md`.
+{tasks_str}
 
 > [!WARNING]
 > **Engineering Trap to Avoid:** {trap_warning}
@@ -223,10 +292,26 @@ Rather than juggling 15 scattered tutorials, use these **6 canonical engineering
 
 To make sure your 8-month journey produces **real, senior-level engineering skill** rather than passive reading, this curriculum includes five critical systems mechanisms you might not have thought to ask for:
 
-### 7.1 The "Zero AI Autocomplete / Blank-File" Implementation Rule
-When doing **Task 2 (25m From-Scratch Implementation)** each day:
-- **Turn off AI code-completion (Copilot/inline ghost text) during your 25-minute implementation block.**
-- You may read the book, Python docs, or `help()`, and you can ask an AI *conceptual* questions ("How does `__set_name__` receive the attribute name?") or ask it to **review** your code *after* you write it—but your fingers must type every class, signature, loop, and test from a blank file. Muscle memory for strict typing, error handling, and async cleanup only forms when you resolve the compiler/type-checker errors yourself.
+### 7.1 The Dual-Mode AI Engineering Protocol
+
+Modern senior systems engineering and 2026+ technical interviews (Google Code Comprehension Round, Meta AI-Assisted Coding Interview, Anthropic 4-Level Progressive OA, and Stripe Bug Squash) evaluate two complementary competencies: the ability to build bulletproof systems from first principles without assistance, and the ability to steer AI assistants critically without succumbing to hallucinations or subtle bugs. This curriculum strictly divides your engineering time into two distinct operational modes:
+
+#### Mode A: Blank-File Construction (Days 1–5 of Every Week & All of Month 1)
+- **Inline AI autocomplete (Copilot/Cursor ghost-text) is STRICTLY DISABLED during Task 2.**
+- Every class, type signature, algorithm, and test must be typed by hand from a blank buffer in `src/pymastery/`.
+- **Why This Is Non-Negotiable:** Muscle memory for static type narrowing (`mypy --strict`), context management (`ExitStack`), memory layout (`memoryview`), and concurrency invariants only forms when your own nervous system struggles with and resolves compiler and runtime diagnostics. If an AI writes your type signatures or loops, you will fail unassisted live coding rounds and lack durable mental models.
+
+#### Mode B: Adversarial AI Verification & Codebase Navigation (Day 6 of Weeks 5–32)
+- From Month 2 onward, Day 6 shifts to practicing the exact "human-led, AI-assisted" workflow graded in top systems engineering interviews:
+  - **Constrained Prompting:** Never ask vague, lazy prompts like *"Explain this file"* or *"Fix this bug"*. You must form an independent mental hypothesis first and write constrained, context-rich prompts (e.g., *"Trace how `allow_request()` mutates `self.tokens` across concurrent async tasks and check whether wall-clock drift in `time.time()` affects token refill math under leap seconds or NTP steps"*).
+  - **Output Validation (Catching Hallucinations):** Deliberately audit AI explanations and AI-generated code for classic LLM blind spots:
+    1. Using wall-clock `time.time()` instead of monotonic `time.monotonic()` for intervals, timeouts, and rate limits.
+    2. Omitting `threading.Lock` or `asyncio.Lock` around shared mutable state.
+    3. Swallowing `asyncio.CancelledError` inside blanket `except Exception:` blocks, breaking cancellation cascades.
+    4. Using $O(N)$ `list.pop(0)` instead of $O(1)$ `collections.deque` in queues.
+    5. Generating tautological unit tests that assert buggy behavior or over-mock internals with `unittest.mock.patch`.
+    6. Overlooking unvalidated 64-bit integer lengths or out-of-bounds binary buffer offsets.
+  - **Empirical Proof:** Never accept an AI claim at face value. You must write an empirical reproduction: a failing `pytest` or `tracemalloc` script that proves the AI's hallucination or concurrency bug, fix it yourself, and document the log in `artifacts/dayXXX/ai-audit.md`.
 
 ### 7.2 Your Standard `pyproject.toml` Quality Gate Template (Use from Day 1)
 Every code file you write across all 224 days lives inside a single cohesive mono-package (`py-mastery/`) configured with strict verification from Day 1:
@@ -271,13 +356,15 @@ testpaths = ["tests"]
 filterwarnings = ["error"]
 ```
 
-### 7.3 The 5-Point "Quality Code" Self-Review Rubric
-Before checking off any day's final task box, verify these 5 invariants:
-1. **Types Tell the Whole Truth:** Could another engineer understand the inputs, outputs, and failure modes of your function from its signature alone without reading its body?
-2. **Invalid States Are Unrepresentable:** Did you use `@dataclass(frozen=True, slots=True)`, `Enum`, and `NewType`/`TypeGuard` instead of passing untyped `dict`s or raw `int`/`str` flags?
-3. **O(1) Memory & Deterministic Cleanup:** Does your code process streams lazily (`Iterator`/`AsyncIterator`) and close every file/socket/task/shared-memory block inside a `with`/`async with`/`finally` block?
-4. **Complexity Awareness:** Did you avoid hidden $O(N^2)$ string concatenations, `list.pop(0)`, or linear `x in list` scans inside loops?
-5. **Failure-Tested:** Did you witness your test suite fail when you broke an invariant in Task 5, and pass when you restored it?
+### 7.3 The 7-Point Quality Code & Hiring Committee Rubric
+Before checking off any day's final task box, evaluate your code against these 7 production and interview criteria:
+1. **Types Tell the Whole Truth:** Could another engineer understand the inputs, outputs, and failure modes of your function from its signature alone without reading its body? Passes `mypy --strict` with zero `Any` and zero `# type: ignore`.
+2. **Invalid States Are Unrepresentable:** Did you use `@dataclass(frozen=True, slots=True)`, `Enum`/`StrEnum`, and `TypeGuard`/`NewType` instead of passing untyped `dict`s or raw string/int flags?
+3. **O(1) Memory & Deterministic Cleanup:** Does your code process streams lazily (`Iterator`/`AsyncIterator`) and close every file/socket/task/shared-memory block inside a `with`/`async with`/`finally` block? Verified with `tracemalloc`.
+4. **Complexity Awareness:** Did you avoid hidden $O(N^2)$ string concatenations, `list.pop(0)`, or linear `x in list` scans inside hot loops?
+5. **Failure-Tested:** Did you witness your test suite fail when you broke an invariant or ran the pre-seeded micro-bug, and pass when you restored it?
+6. **Unfamiliar Code & Diff Hygiene:** Can you trace unfamiliar 300–500 line multi-file codebases in <20 minutes, isolate regressions with `git bisect run pytest`, and integrate features without breaking existing architectural contracts or introducing code churn?
+7. **Hiring Committee Packet Narration & Adversarial AI Verification:** Can you state your clarifying assumptions, chosen pattern, time/space complexity, 10x load failure mode, and primary trade-off in 5 concise sentences, and empirically prove/disprove AI-generated suggestions?
 
 ### 7.4 How This Curriculum Connects Directly to Your AI Inference Engineering Curriculum
 You do **not** have to wait 8 full months before touching `AI_INFERENCE_ENGINEERING_CURRICULUM_BOOK.html`:
@@ -296,6 +383,10 @@ You do **not** have to wait 8 full months before touching `AI_INFERENCE_ENGINEER
 - [ ] I implement Python Data Model dunders (`__repr__`, `__eq__`, `__hash__`, `__getitem__` slicing), `__slots__`, `weakref`, and the descriptor protocol (`__get__`, `__set__`, `__set_name__`) from scratch.
 - [ ] I have implemented an O(1) `LRUCache`, a `FairRequestScheduler` (`heapq`), a `TokenPrefixTrie`, and an `mmap` `.safetensors` binary reader by hand.
 - [ ] I have implemented an `asyncio` `AsyncDynamicBatcher`, length-prefixed TCP RPC, an `SSEParser`, a raw ASGI streaming server with graceful drain, and a `multiprocessing.shared_memory` worker bridge (`pyserve-core`).
+- [ ] I can navigate unfamiliar 300–500 line multi-file repositories cold, squash seeded bugs, and implement architectural feature extensions within 60 minutes.
+- [ ] I can catch subtle AI hallucinations, tautological AI unit tests (over-mocking), and security vulnerabilities (path traversal, header bombs, Slowloris) during Mode B audits.
+- [ ] I can execute 4-level progressive refactoring under shifting constraints (TTL expiration, atomic state rollback, async batch compaction) without ground-up rewrites.
+- [ ] I can isolate regressions and resource leaks across git commit histories automatically using `git bisect run pytest`.
 
 ### 8.2 Month 8 Advanced Concepts Gate Checklist (Day 224)
 - [ ] I can use `__init_subclass__`, metaclasses, `ast.NodeTransformer`, `dis` bytecode inspection, and `sys.monitoring` safely.
@@ -306,6 +397,10 @@ You do **not** have to wait 8 full months before touching `AI_INFERENCE_ENGINEER
 - [ ] I can profile CPU and memory using `cProfile`, stack-sampling flamegraphs, and roofline arithmetic-intensity models.
 - [ ] I can bind native C kernels (`ctypes`/`cffi`/`pybind11` architecture) with zero-copy buffer pointers, verify 70B shapes in 0 MB with `MetaTensor`s, and explain DLPack, `@triton.jit`, and CUDA Graphs.
 - [ ] I have built and defended the full `Mini-vLLM` multi-process capstone with Prometheus metrics, prefix-aware routing, circuit breakers, and chaos post-mortems.
+- [ ] I can trace and modify actual production open-source `vllm` source files (`AsyncLLMEngine`, scheduler, incremental detokenizer, OpenAI serving protocol, and Prometheus metrics).
+- [ ] I can audit C99 / C++ FFI bindings, fix pointer-lifetime and buffer-alignment bugs, pin `memoryview` buffers against GC, and release the GIL safely.
+- [ ] I can wire a deterministic Agentic Tool-Call Execution Sandbox & Evaluation Harness validating emitted JSON tool arguments against `NanoSchema` under `asyncio.timeout`.
+- [ ] I can deliver a crisp 2-minute oral Hiring Committee Packet Narration stating assumptions, architecture, Big-O bounds, 10x failure modes, and accepted design trade-offs.
 """
 
 full_md = (
