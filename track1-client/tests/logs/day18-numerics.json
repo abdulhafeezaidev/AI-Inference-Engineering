@@ -1,0 +1,10 @@
+{
+    "causal_leakage_prevented": true,
+    "fp16_tolerance_met": true,
+    "bf16_tolerance_met": true,
+    "tolerances": {
+        "fp32": "baseline",
+        "fp16": "1e-3",
+        "bf16": "1e-2"
+    }
+}
