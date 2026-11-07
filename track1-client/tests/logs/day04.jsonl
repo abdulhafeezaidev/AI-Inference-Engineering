@@ -2,3 +2,7 @@
 {"request_id": "req-test-002", "chunks": [], "first_chunk_seconds": null, "final_seconds": 2.0679615999997623, "error_type": "ConnectError", "status_code": null}
 {"request_id": "req-test-003", "chunks": [], "first_chunk_seconds": null, "final_seconds": 0.22837860000072396, "error_type": "TimeoutError", "status_code": null}
 {"request_id": "req-test-004", "chunks": [], "first_chunk_seconds": null, "final_seconds": 0.11627339999904507, "error_type": "CancelledError", "status_code": null}
+{"request_id": "req-test-001", "chunks": [], "first_chunk_seconds": null, "final_seconds": 2.2107732000004034, "error_type": "ConnectError", "status_code": null}
+{"request_id": "req-test-002", "chunks": [], "first_chunk_seconds": null, "final_seconds": 2.073988200000258, "error_type": "ConnectError", "status_code": null}
+{"request_id": "req-test-003", "chunks": [], "first_chunk_seconds": null, "final_seconds": 0.23377110000001267, "error_type": "TimeoutError", "status_code": null}
+{"request_id": "req-test-004", "chunks": [], "first_chunk_seconds": null, "final_seconds": 0.11334749999969063, "error_type": "CancelledError", "status_code": null}
