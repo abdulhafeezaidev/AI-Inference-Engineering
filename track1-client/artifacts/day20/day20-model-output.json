@@ -1,0 +1,20 @@
+{
+    "prompt": "The most important rule of inference engineering is",
+    "input_ids_shape": [
+        1,
+        8
+    ],
+    "logits_shape": [
+        1,
+        8,
+        49152
+    ],
+    "last_hidden_state_shape": [
+        1,
+        8,
+        576
+    ],
+    "next_token_id": 288,
+    "next_token_text": " to",
+    "forward_pass_ms": 384.4817350000085
+}
