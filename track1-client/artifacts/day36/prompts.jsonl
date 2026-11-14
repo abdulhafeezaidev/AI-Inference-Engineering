@@ -1,0 +1,5 @@
+{"id": "p-kv-cache", "prompt": "Explain how PagedAttention reduces KV cache memory fragmentation."}
+{"id": "p-batching", "prompt": "Compare static batching and continuous batching in LLM serving."}
+{"id": "p-dtype", "prompt": "Why does FP16 double maximum concurrency compared to FP32?"}
+{"id": "p-radix", "prompt": "How does SGLang RadixAttention reuse shared system prompt prefixes?"}
+{"id": "p-streaming", "prompt": "Describe Server-Sent Events and delta chunks in OpenAI streaming APIs."}

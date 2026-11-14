@@ -1,0 +1,31 @@
+{
+  "run_id": "bench-20261114T063632Z-5bdfe6",
+  "timestamp_utc": "2026-11-14T06:36:33.329822+00:00",
+  "environment": {
+    "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python_version": "3.14.4",
+    "cpu_model": "AMD Ryzen 5 7430U with Radeon Graphics",
+    "cpu_cores": 12,
+    "gpu": "none (CPU / mock validation mode)"
+  },
+  "workload_config": {
+    "model_url": "http://127.0.0.1:8036",
+    "model": "HuggingFaceTB/SmolLM-135M-Instruct",
+    "prompt_file": "artifacts/day36/prompts.jsonl",
+    "prompt_pool_size": 5,
+    "max_tokens": 16,
+    "concurrency": 2,
+    "warmup_count": 5,
+    "measured_count": 5,
+    "seed": 42
+  },
+  "statistical_hygiene": {
+    "warmup_isolated": true,
+    "schema_validated": true,
+    "measured_ok_count": 4,
+    "measured_error_count": 1,
+    "failure_rate": 0.2,
+    "p50_ttft_ms": 30.206,
+    "p50_total_latency_ms": 158.91
+  }
+}
