@@ -1,0 +1,22 @@
+STARTUP COMMAND:
+python -m vllm.entrypoints.openai.api_server --model HuggingFaceTB/SmolLM-135M-Instruct --dtype float16 --gpu-memory-utilization 0.85 --max-model-len 2048 --port 8035
+
+LOGS:
+INFO 11-14 11:15:00 engine.py] Initializing LLM engine: model=HuggingFaceTB/SmolLM-135M-Instruct, dtype=float16
+INFO 11-14 11:15:00 cache_engine.py] # GPU blocks: 4120, # CPU blocks: 512 (max_model_len=2048)
+INFO 11-14 11:15:00 api_server.py] Uvicorn running on http://127.0.0.1:8035
+
+PROCESS SNAPSHOT:
+    PID COMMAND         COMMAND
+    706 python          ./.venv-linux/bin/python scripts/run_day35_gate.py
+
+DOCKER SNAPSHOT:
+
+The command 'docker' could not be found in this WSL 2 distro.
+We recommend to activate the WSL integration in Docker Desktop settings.
+
+For details about using Docker Desktop with WSL 2, visit:
+
+https://docs.docker.com/go/wsl2/
+
+Docker daemon inactive
