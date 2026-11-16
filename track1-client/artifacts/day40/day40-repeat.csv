@@ -1,0 +1,4 @@
+trial_id,config_profile,server_restarted,concurrency,warmup_count,measured_count,failure_rate,throughput_tps,ttft_p50_ms,ttft_p95_ms,itl_p50_ms,e2e_p50_ms,e2e_p95_ms
+run1_baseline_A,ConfigA_StandardDecode,True,2,3,8,0.0,145.06,33.913,93.25,10.345,150.318,206.124
+run2_restart_A,ConfigA_StandardDecode,True,2,3,8,0.0,157.66,34.997,36.343,10.421,149.939,153.63
+run3_config_change_B,ConfigB_OptimizedDecode,True,2,3,8,0.0,229.43,32.906,34.44,6.28,102.433,109.434
