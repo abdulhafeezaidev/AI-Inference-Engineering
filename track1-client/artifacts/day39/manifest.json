@@ -1,0 +1,96 @@
+{
+  "day": 39,
+  "timestamp_utc": "2026-11-16T15:26:57.951827+00:00",
+  "environment": {
+    "os": "Linux-6.18.33.2-microsoft-standard-WSL2-x86_64-with-glibc2.43",
+    "python_version": "3.14.4",
+    "cpu_cores": 12
+  },
+  "workload_contract": {
+    "model": "HuggingFaceTB/SmolLM-135M-Instruct",
+    "max_tokens": 16,
+    "warmup_per_level": 2,
+    "measured_repetitions_per_level": 5,
+    "concurrency_levels": [
+      1,
+      2,
+      4,
+      8,
+      12
+    ],
+    "engine_slots": 4,
+    "engine_queue_limit": 8
+  },
+  "results": [
+    {
+      "concurrency": 1,
+      "measured_n": 5,
+      "ok_n": 5,
+      "error_n": 0,
+      "failure_rate": 0.0,
+      "system_throughput_tps": 97.36,
+      "ttft_p50_ms": 33.549,
+      "ttft_p95_ms": 35.307,
+      "itl_p50_ms": 8.595,
+      "itl_p95_ms": 8.65,
+      "e2e_p50_ms": 163.651,
+      "e2e_p95_ms": 165.835
+    },
+    {
+      "concurrency": 2,
+      "measured_n": 5,
+      "ok_n": 5,
+      "error_n": 0,
+      "failure_rate": 0.0,
+      "system_throughput_tps": 140.17,
+      "ttft_p50_ms": 36.416,
+      "ttft_p95_ms": 38.605,
+      "itl_p50_ms": 11.046,
+      "itl_p95_ms": 11.156,
+      "e2e_p50_ms": 202.202,
+      "e2e_p95_ms": 206.001
+    },
+    {
+      "concurrency": 4,
+      "measured_n": 5,
+      "ok_n": 5,
+      "error_n": 0,
+      "failure_rate": 0.0,
+      "system_throughput_tps": 176.31,
+      "ttft_p50_ms": 42.73,
+      "ttft_p95_ms": 51.868,
+      "itl_p50_ms": 15.94,
+      "itl_p95_ms": 16.026,
+      "e2e_p50_ms": 279.054,
+      "e2e_p95_ms": 290.929
+    },
+    {
+      "concurrency": 8,
+      "measured_n": 5,
+      "ok_n": 5,
+      "error_n": 0,
+      "failure_rate": 0.0,
+      "system_throughput_tps": 182.85,
+      "ttft_p50_ms": 47.952,
+      "ttft_p95_ms": 96.805,
+      "itl_p50_ms": 15.957,
+      "itl_p95_ms": 22.032,
+      "e2e_p50_ms": 287.627,
+      "e2e_p95_ms": 427.642
+    },
+    {
+      "concurrency": 12,
+      "measured_n": 5,
+      "ok_n": 5,
+      "error_n": 0,
+      "failure_rate": 0.0,
+      "system_throughput_tps": 182.97,
+      "ttft_p50_ms": 52.108,
+      "ttft_p95_ms": 95.954,
+      "itl_p50_ms": 16.039,
+      "itl_p95_ms": 22.107,
+      "e2e_p50_ms": 292.43,
+      "e2e_p95_ms": 427.692
+    }
+  ]
+}
