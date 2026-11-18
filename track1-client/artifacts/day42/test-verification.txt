@@ -1,0 +1,49 @@
+test_hand_computed_three_token_trace (tests.test_metrics.TestStreamMetrics.test_hand_computed_three_token_trace) ... ok
+test_single_token_stream_edge_case (tests.test_metrics.TestStreamMetrics.test_single_token_stream_edge_case) ... ok
+test_warmup_and_error_isolation_in_summary (tests.test_metrics.TestStreamMetrics.test_warmup_and_error_isolation_in_summary) ... ok
+test_cli_invalid_file (tests.test_config.TestCli.test_cli_invalid_file) ... Configuration Error: Validation error for 'model': Missing required field 'model'
+ok
+test_cli_missing_file (tests.test_config.TestCli.test_cli_missing_file) ... File Error: Configuration file not found: non_existent_file.json
+ok
+test_cli_sample_generation (tests.test_config.TestCli.test_cli_sample_generation) ... ok
+test_cli_valid_file (tests.test_config.TestCli.test_cli_valid_file) ... ok
+test_blank_prompt_raises_error (tests.test_config.TestConfigValidation.test_blank_prompt_raises_error) ... ok
+test_default_configs_are_valid (tests.test_config.TestConfigValidation.test_default_configs_are_valid) ... ok
+test_invalid_max_tokens_exceeds_bound (tests.test_config.TestConfigValidation.test_invalid_max_tokens_exceeds_bound) ... ok
+test_invalid_max_tokens_zero_or_negative (tests.test_config.TestConfigValidation.test_invalid_max_tokens_zero_or_negative) ... ok
+test_invalid_protocol (tests.test_config.TestConfigValidation.test_invalid_protocol) ... ok
+test_invalid_server_port (tests.test_config.TestConfigValidation.test_invalid_server_port) ... ok
+test_invalid_temperature_bounds (tests.test_config.TestConfigValidation.test_invalid_temperature_bounds) ... ok
+test_invalid_top_p_bounds (tests.test_config.TestConfigValidation.test_invalid_top_p_bounds) ... ok
+test_load_from_file (tests.test_config.TestConfigValidation.test_load_from_file) ... ok
+test_malformed_json_raises_validation_error (tests.test_config.TestConfigValidation.test_malformed_json_raises_validation_error) ... ok
+test_missing_model_raises_error (tests.test_config.TestConfigValidation.test_missing_model_raises_error) ... ok
+test_missing_prompt_raises_error (tests.test_config.TestConfigValidation.test_missing_prompt_raises_error) ... ok
+test_parse_valid_json (tests.test_config.TestConfigValidation.test_parse_valid_json) ... ok
+test_serialization_round_trip (tests.test_config.TestConfigValidation.test_serialization_round_trip) ... ok
+
+----------------------------------------------------------------------
+Ran 21 tests in 0.070s
+
+OK
+{
+  "prompt": "Explain KV-cache memory calculation in modern LLM serving.",
+  "model": "meta-llama/Llama-3-8B-Instruct",
+  "generation": {
+    "max_tokens": 512,
+    "temperature": 0.7,
+    "top_p": 0.95,
+    "stop_sequences": [
+      "<|eot_id|>"
+    ]
+  },
+  "server": {
+    "host": "127.0.0.1",
+    "port": 8000,
+    "protocol": "http",
+    "timeout_seconds": 60.0
+  },
+  "request_id": "req-sample-001",
+  "stream": true
+}
+OK: Configuration is valid.
